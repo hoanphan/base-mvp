@@ -8,7 +8,7 @@
 import Foundation
 
 let templateName = "MVP.xctemplate"
-let destinationRelativePath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
+let destinationRelativePath = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
 
 func printInConsole(_ message:Any){
     print("====================================")
@@ -17,12 +17,12 @@ func printInConsole(_ message:Any){
 }
 
 func moveTemplate(){
-
+    
     let fileManager = FileManager.default
     let destinationPath = bash(command: "xcode-select", arguments: ["--print-path"]).appending(destinationRelativePath)
     do {
         if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateName)"){
-        
+            
             try fileManager.copyItem(atPath: templateName, toPath: "\(destinationPath)/\(templateName)")
             
             printInConsole("✅  Template installed succesfully 🎉. Enjoy it 🙂")
